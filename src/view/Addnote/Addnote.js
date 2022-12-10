@@ -1,11 +1,13 @@
 import React from "react";
-import "./Addnote.css";
 
+import "./Addnote.css";
+import Navbar from "./../../components/Navbar/Navbar";
 
 function Addnote() {
     return (
       <>
-      <h1> This is Addnotepage</h1>
+      <Navbar/>
+      <h1>  Addnote</h1>
       </>
     );
   }
