@@ -1,48 +1,72 @@
-import React,{useState,useEffect, Component} from "react";
+import React, { useState, useEffect, Component } from "react";
 import "./Home.css";
-import Navbar from "./../../components/Navbar/Navbar";
-import Note from  "./../../components/Note/Note";
+import Note from "./../../components/Note/Note";
 
 
 function Home() {
-  const [notes,setNotes] =useState([
-    {
-      title:"Note 1",
-      content:"This content of note 1"
-    },
-    {
-      title:"Note 2",
-      content:"This content of note 2"
-    },
+   
+    const [title,setTitle] = useState("")
+    const [content ,setContent] = useState("")
 
+  const [notes, setNotes] = useState([
     {
-      title:"Note 3",
-      content:"This content of note 3"
-    },
-    {
-      title:"Note 4",
-      content:"This is the content of note 4"
+      title: "Note 1",
+      content: "You can add more note to this list"
     }
+    
+    
   ])
-    return (
-      <>
-      <Navbar/>
+
+    function addnote(){
+      const newNote={
+      "title": title,
+      "contentn": content
+      }
+      setNotes([...notes,newNote])
+      
+        
+      setTitle("")
+      setContent("")
+    }
+  return (
+    <>
+      
       <div className="app-title-container">
-      <h1 className="app-title"> My notes</h1>
+        <h1 className="app-title"> My notes</h1>
       </div>
-      <div className="notes-container">
+      <div className="row">
+        <div className="col-md-6">
+        <div className="notes-container">
         {
-          notes.map((note,index)=>{
+          notes.map((note, index) => {
             return (
-              <Note title={note.title} content={note.content}/>
+              <Note title={note.title} content={note.content} />
 
             )
           })
         }
       </div>
-      </>
-    );
-  }
-  
-  export default Home;
-  
+        </div>
+        <div className="col-md-6">
+         <div className="note-editor-container">
+          <h3 className="text-center"> Addnote</h3>
+          <form>
+            <div>
+              <input type="text" placeholder="Note Title"value={title} onChange={(e)=>{setTitle(e.target.value)}} className="form-control mt-4"/>
+            </div>
+            <div>
+              <input type="text" placeholder="Note Discription" value={content} onChange={(e)=>{setContent(e.target.value)}} className="form-control mt-4"/>
+            </div>
+            <div className="d-flex justify-content-center">
+              <button type="button" className="btn btn-primary mt-4" onClick={addnote}>Add Note</button>
+            </div>
+          </form>
+          </div> 
+        </div>
+      </div>
+      
+    </>
+  );
+}
+
+export default Home;

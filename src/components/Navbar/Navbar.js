@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 function Navbar() {
@@ -19,8 +19,8 @@ function Navbar() {
                             <li class="nav-item">
                                 <Link class="nav-link " aria-current="page" to="add-note">Addnote</Link>
                             </li>
-                            
-                            
+
+
                         </ul>
                     </div>
                 </div>
