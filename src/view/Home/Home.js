@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Component } from "react";
 import "./Home.css";
 import Note from "./../../components/Note/Note";
+import swal from 'sweetalert';
 
 
 function Home() {
@@ -20,10 +21,23 @@ function Home() {
     function addnote(){
       const newNote={
       "title": title,
-      "contentn": content
+      "content": content
       }
+      if(title==="" || content===""){
+        swal({
+          title: "Error",
+          text: "Please  fill the all fileds",
+          icon:"warning",
+        }); 
+           return;
+      }
+
       setNotes([...notes,newNote])
-      
+      swal({
+        title: "Note added",
+        text: "Your note has been added to the list",
+        icon: "success",
+      });
         
       setTitle("")
       setContent("")
